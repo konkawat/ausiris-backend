@@ -4,12 +4,12 @@
 
 export const environment = {
   production: false,
-  /*// local all    */
+  /*// local all   
   url_api: 'https://localhost:7272/'
- 
-  /*// Server
+  */
+  /*// Server*/
   url_api: 'http://203.154.83.135:25554/'
-*/
+
 };
 
 /*
