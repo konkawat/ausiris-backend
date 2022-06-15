@@ -1,0 +1,8 @@
+
+<div mat-dialog-content class="text-center">
+  {{getMsgData}}
+</div>
+<div mat-dialog-actions class="d-flex text-center">
+  <button mat-raised-button color="primary" (click)="closeDialog(false)">Cancel</button>
+  <button mat-button cdkFocusInitial (click)="closeDialog(true)">Ok</button>
+</div>

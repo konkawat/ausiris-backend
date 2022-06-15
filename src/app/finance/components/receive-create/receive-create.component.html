@@ -1,0 +1,87 @@
+
+<div class="modal-header mod">
+  <h4 class="modal-title pull-left">
+       รับชำระเงิน
+  </h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+    
+      <div class="table-responsive input-group input-group-sm">
+        <table class="table table-flush table-responsive table-hover z-index-2 h-100" style="padding-bottom:5px;" id="datatable-search">
+          <thead class="thead-light text-white text-xs" style="background-color: gray">
+            <tr>
+              <th>รหัสสมาชิก</th>
+              <th>ชื่อสมาชิก</th>
+              <th>รหัสใบเทรด</th>
+              <th>รหัสเออเดอร์</th>
+              <th>วันที่</th>
+              <th>ประเภท</th>
+              <th>ประเภททอง</th>
+              <th>จำนวน</th>
+              <th>ราคา</th>
+              <th>จำนวนเงิน</th>
+              <th>สถานะ</th>
+              <th>ชำระไว้เกิน</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of tickets">
+              <td>
+                {{item.ticketRef}}
+              </td>
+              <td class="text-xs font-weight-bold">
+                  {{item.memberName}}
+              </td>
+              <td class="text-xs">
+                {{item.tradeRef}}
+              </td>
+              <td class="text-xs font-weight-bold">
+                {{item.ticketRef}}
+              </td>
+              <td>{{item.createDate}}</td>
+              <td>{{item.ticketType}}</td>
+              <td>{{item.purity}}</td>
+              <td>{{item.quantity}}</td>
+              <td>{{item.amount}}</td>
+              <td>{{item.status}}</td>
+              <td>{{item.amountOver}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form [formGroup]="form" (submit)="onSubmit()">
+  <div class="modal-body">
+      <div class="row">
+          <div class="col-sm-10 offset-sm-1">
+              <div class="form-group">
+                  <label for="">ticketRef</label>
+                  <input formControlName="ticketRef" type="text" class="form-control" placeholder="required">
+              </div>
+              <div class="form-group">
+                  <label for="">Member</label>
+                  <select class="form-control" formControlName="memberId">
+                      <option value="">-- select member --</option>
+                      <option *ngFor="let item of memberListItem" [value]="item.memberId">
+                          {{ item.memberName }}
+                      </option>
+                  </select>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="modal-footer">
+      <button type="submit" class="btn btn-primary">
+          Save
+      </button>
+  </div>
+</form>

@@ -1,0 +1,136 @@
+<app-content>
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-12 m-auto">
+        <form class="mb-8">
+          <div class="card p-3 border-radius-xl bg-white h-100">
+            <h2 class="font-weight-bolder">Ticket List</h2>
+            
+              <!-- start content -->
+              <div class="row mb-2">
+                <div class="col-lg-12 mb-lg-0 mb-4">
+                  <div class="card z-index-2 h-100 bg-dark text-white mb-3">
+                    <div class="card-header pb-0 pt-3 bg-transparent">
+                      <div class="card-tools">
+                        <div class="input-group input-group-md gap-0">
+            
+                          <select class="form-control" #purity [(ngModel)]="ddlPurity" name="ddlPurity" placeholder="--ประเภททอง--">
+                            <option value="">Purity</option>
+                            <option value="96">96.50%</option>
+                            <option value="99">99.99%</option>
+                          </select>
+                          <select class="form-control" #status [(ngModel)]="ddlStatus" name="ddlStatus" placeholder="--สถานะ--">
+                            <option value="">Status</option>
+                            <option value="none">none</option>
+                            <option value="patial">patial</option>
+                            <option value="paid">paid</option>
+                          </select>
+                          <input class="form-control" #drCD="bsDaterangepicker" bsDaterangepicker [(ngModel)]="bsDateRangeValue" [ngModelOptions]="{standalone: true}"
+                            [bsConfig]="{ rangeInputFormat : 'DD/MM/YYYY', dateInputFormat: 'DD/MM/YYYY', showWeekNumbers: false }"
+                            readonly="true" placeholder="Member Name,Ticket Ref">
+            
+                          <input type="text" name="txtSearch" class="form-control float-right" placeholder="Code, Name, Address" 
+                            [(ngModel)]="txtSearch" #search >
+                          <button type="submit" class="btn-xs btn-primary" (click)="onClear()">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="isClear"></span>
+                            <i class="fa fa-refresh" *ngIf="!isClear"></i>&nbsp;Reset
+                          </button>
+                          <button type="submit" class="btn-xs btn-primary" #btn (click)="onSearch()">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+                              *ngIf="isLoading"></span>
+                            <i class="fa fa-search" *ngIf="!isLoading"></i>&nbsp;Search
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-12">
+                  <div class="card">
+                    <div *ngIf="isLoading" class="text-center">
+                      <img src="../../../../../assets/img/loading.gif">
+                    </div>
+                    <div class="table-responsive input-group input-group-sm" *ngIf="!isLoading">
+                      <table class="table table-flush table-responsive table-hover z-index-2 h-100" style="padding-bottom:5px;"
+                        id="datatable-search">
+                        <thead class="thead-light text-white text-xs" style="background-color: gray">
+                          <tr>
+                            <th>รหัสสมาชิก</th>
+                            <th>ชื่อสมาชิก</th>
+                            <th>รหัสใบเทรด</th>
+                            <th>รหัสเออเดอร์</th>
+                            <th>วันที่</th>
+                            <th>ประเภท</th>
+                            <th>ประเภททอง</th>
+                            <th>จำนวน</th>
+                            <th>ราคา</th>
+                            <th>จำนวนเงิน</th>
+                            <th>สถานะ</th>
+                            <th>ชำระไว้เกิน</th>
+                            <th>All</th>
+                          </tr>
+                        </thead>
+                        <tbody class="text-xs text-center">
+                          <tr *ngFor="let item of tickets">
+                            <td>{{item.member.memberRef}}</td>
+                            <td class="text-start">{{item.member.memberName}}</td>
+                            <td>{{item.tradeRef}}</td>
+                            <td>{{item.ticketRef}}</td>
+                            <td>{{item.createDate | date: 'dd/MM/yyyy HH:mm'}}</td>
+                            <td>
+                              <ng-container *ngIf="item.ticketType=='Buy' then buy"></ng-container>
+                              <ng-container *ngIf="item.ticketType=='Sell' then sell"></ng-container>
+                              <ng-template #buy>
+                                  <span class="text-success font-weight-bold">{{item.ticketType}}</span>
+                              </ng-template>
+                              <ng-template #sell>
+                                  <span class="text-danger font-weight-bold">{{item.ticketType}}</span>
+                              </ng-template>
+                            </td>
+                            <td>
+                              <ng-container *ngIf="item.purity=='96' then p96"></ng-container>
+                              <ng-container *ngIf="item.purity=='99' then p99"></ng-container>
+                              <ng-template #p96>
+                                  <span class="purity96 font-weight-bold">96.50%</span>
+                              </ng-template>
+                              <ng-template #p99>
+                                  <span class="purity99 font-weight-bold">99.99%</span>
+                              </ng-template>
+                            </td>
+                            <td>{{item.quantity}}</td>
+                            <td>{{item.price | number}}</td>
+                            <td>{{item.amount | number }}</td>
+                            <td>{{item.status}}</td>
+                            <td>{{item.amountOver | number}}</td>
+                            <td>
+                              <div class="d-flex">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" id="customCheck1">
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr style="background-color: rgb(219, 239, 229)">
+                            <td colspan="14" class="text-xs font-weight-bold text-center">
+                              <div class="align-items-center">
+                                Total
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end content-->
+              
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</app-content>

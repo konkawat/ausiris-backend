@@ -1,0 +1,46 @@
+a {
+  cursor: pointer;
+  color: white;
+  &.brand-link {
+    text-decoration: none;
+  }
+}
+mat-icon {
+  vertical-align: text-bottom;
+}
+.nav-menu {
+  a {
+    color:rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 18px;
+    transition: all 0.3s ease-in-out; //delay mouse hover
+    &:hover{
+        color:white
+    }
+  }
+}
+.table-borderless td,
+.table-borderless th {
+    border: 0;
+}
+
+.feed-ask{
+  font-size: 28px;
+  font-weight: 600;
+  color:black;
+}
+.feed-bid{
+  font-size: 28px;
+  font-weight: 600;
+  color:dodgerblue;
+}
+
+.feed-thb{
+  font-size: 28px;
+  font-weight: 600;
+  color:dodgerblue;
+}
+.fixed{
+  width: 300px;
+}

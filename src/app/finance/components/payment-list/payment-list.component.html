@@ -1,0 +1,91 @@
+<app-content>
+  <div class="row mt-4">
+    <div class="col-lg-12 mb-lg-0 mb-4">
+      <div class="card z-index-2 h-100 bg-dark text-white mb-3">
+        <div class="card-header pb-0 pt-3 bg-transparent" style="text-align:right;">
+            <form>
+              <input type="text" id="txtDateFrom" placeholder="From">
+              <input type="text" id="txtDateTo" placeholder="To">
+              <input type="text" id="txtPurity" placeholder="--ประเภททอง--">
+              <input type="text" id="txtStatus" placeholder="--สถานะ--">
+              <input type="text" id="txtSearch" placeholder="ค้นหาชื่อหรือรหัสสมาชิก">
+              <input type="button" id="btnSearch" value="Search" style="width:80px">
+              <button type="submit" class="btn-xs btn-info" #btn (click)="onSearch()">
+                <i class="fa fa-search"></i>Search
+            </button>
+            <a href="#" class="text-white" style="cursor:pointer;text-decoration:solid;" (click)="onSearch()">Search</a>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="table-responsive">
+          <table class="table table-flush table-responsive table-hover z-index-2 h-100 " id="datatable-search">
+            <thead class="thead-light text-white text-xs" style="background-color: gray">
+              <tr>
+                <th>รหัสสมาชิก</th>
+                <th>ชื่อสมาชิก</th>
+                <th>รหัสใบเทรด</th>
+                <th>รหัสเออเดอร์</th>
+                <th>วันที่</th>
+                <th>ประเภท</th>
+                <th>ประเภททอง</th>
+                <th>จำนวน</th>
+                <th>ราคา</th>
+                <th>จำนวนเงิน</th>
+                <th>สถานะ</th>
+                <th>ชำระไว้เกิน</th>
+                <th>All</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of ticketList$|async">
+                <!-- <tr *ngFor="let item of tickets"> -->
+                <td>
+                  {{ item.ticketRef}}
+                </td>
+                <td class="text-xs font-weight-bold">
+                  <div class="d-flex align-items-center">
+                    {{item.ticketType}}
+                  </div>
+                </td>
+                <td class="text-xs">
+                  {{item.ticketRef}}
+                </td>
+                <td class="text-xs font-weight-bold">
+                 77
+                </td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="customCheck1">
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr style="background-color: rgb(219, 239, 229)">
+                <td colspan="13" class="text-xs font-weight-bold text-center">
+                  <div class="align-items-center">
+                    Total
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-content>

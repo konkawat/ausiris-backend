@@ -1,0 +1,129 @@
+/* You can add global styles to this file, and also import other style files */
+
+//@import '/node_modules/bootstrap/scss/bootstrap';
+//@import '/assets/scss/bootstrap';
+
+// @import "../node_modules/bootstrap/scss/functions";
+
+// // 2. Include any default variable overrides here
+
+// // 3. Include remainder of required Bootstrap stylesheets
+// @import "../node_modules/bootstrap/scss/variables";
+// @import "../node_modules/bootstrap/scss/mixins";
+// @import "../node_modules/bootstrap/scss/root";
+
+// // 4. Include any optional Bootstrap CSS as needed
+// @import "../node_modules/bootstrap/scss/utilities";
+// @import "../node_modules/bootstrap/scss/reboot";
+// @import "../node_modules/bootstrap/scss/type";
+// @import "../node_modules/bootstrap/scss/images";
+// @import "../node_modules/bootstrap/scss/containers";
+// //@import "../node_modules/bootstrap/scss/grid";
+// @import "../node_modules/bootstrap/scss/helpers";
+
+// // 5. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
+// @import "../node_modules/bootstrap/scss/utilities/api";
+
+//@import "assets/scss/argon-dashboard";
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+background-color: #f0f0f4;
+}
+
+.content-header {
+  padding: 15px 0.5rem;
+}
+
+.text-sm .content-header {
+  padding: 10px 0.5rem;
+}
+
+.content-header h1 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.text-sm .content-header h1 {
+  font-size: 1.5rem;
+}
+
+h1.text-title{
+    font-size: 27px;
+    margin: 0;
+  }
+.matSnackbarColor {
+  background: #0a3c5e !important;
+  max-width: 90% !important;
+  min-width: 400px !important;
+  // margin-left: auto !important; // center align from left
+  // margin-right: auto !important; // center align from right
+  // margin-bottom: 1rem !important; 
+  // padding: 10px !important; // spacing between the text and boundary
+  color: white;
+
+  .mat-button-wrapper {
+      color: black !important; // action text color
+  }
+}
+
+// ngx-bootstrap datetime picker
+.bs-datepicker-body table td.week span 
+{
+  color: #0a3c5e !important;
+}
+
+.bs-datepicker-body table td span.selected,
+.bs-datepicker-head,
+.bs-datepicker-head, .bs-datepicker button:active,
+.bs-datepicker-body table td.selected span,
+.bs-datepicker-body table td span[class*="select-"]:after,
+.bs-datepicker-body table td[class*="select-"] span:after,
+.bs-datepicker-body table td.active-week span:hover 
+{
+  background-color: #0a3c5e !important;
+}
+// end
+
+// ngx-bootstrap modal dialog box css
+.close {
+  float: right;
+  font-size: 1.3125rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #FFF;
+  opacity: .5;
+}
+
+.close:hover {
+  color: #000;
+  text-decoration: none;
+}
+
+.close:not(:disabled):not(.disabled):hover, .close:not(:disabled):not(.disabled):focus {
+  opacity: .75;
+}
+
+button.close {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+a.close.disabled {
+  pointer-events: none;
+}
+// end
+
+//Color Purity Gold 99,96
+.purity96 {
+  color: rgb(230, 226, 17);
+}
+.purity99 {
+  color: rgb(102, 101, 22);
+}
